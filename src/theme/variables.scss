@@ -3,6 +3,32 @@
 
 /** Ionic CSS Variables **/
 :root {
+  /** Start SCSS Custom Variables */
+  --ion-background-color: #F6F8FF;
+
+  --ion-text-color: #172A3A;
+
+  --ion-color-primary-custom: #63D471;
+  --ion-color-primary-custom-shade: #25702e;
+  --ion-color-primary-custom-tint: #8fe799;
+
+  .ion-color-primary-custom {
+    --ion-color-base: var(--ion-color-primary-custom);
+    --ion-color-shade: var(--ion-color-primary-custom-shade);
+    --ion-color-tint: var(--ion-color-primary-custom-tint);
+  }
+
+  --ion-color-secondary-custom: #09BC8A;
+  --ion-color-secondary-custom-shade: #0a6e52;
+  --ion-color-secondary-custom-tint: #63c0a6;
+
+  .ion-color-secondary-custom {
+    --ion-color-base: var(--ion-color-secondary-custom);
+    --ion-color-shade: var(--ion-color-secondary-custom-shade);
+    --ion-color-tint: var(--ion-color-secondary-custom-tint);
+  }
+  /** End SCSS Custom Variables */
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -76,13 +102,13 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
    * -------------------------------------------
    */
 
-  body {
+  body[color-theme="dark"] {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -152,8 +178,8 @@
    * -------------------------------------------
    */
 
-  .ios body {
-    --ion-background-color: #000000;
+  .ios body[color-theme="dark"] {
+    --ion-background-color: #172A3A;
     --ion-background-color-rgb: 0,0,0;
 
     --ion-text-color: #ffffff;
@@ -179,7 +205,7 @@
     --ion-color-step-900: #e6e6e6;
     --ion-color-step-950: #f2f2f2;
 
-    --ion-item-background: #000000;
+    --ion-item-background: #172A3A;
 
     --ion-card-background: #1c1c1d;
   }
@@ -196,7 +222,7 @@
    * -------------------------------------------
    */
 
-  .md body {
+  .md body[color-theme="dark"] {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
@@ -233,4 +259,4 @@
 
     --ion-card-background: #1e1e1e;
   }
-}
+// }

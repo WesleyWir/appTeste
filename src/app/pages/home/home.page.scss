@@ -1,3 +1,16 @@
+ion-item-group{
+  margin-top: 10px;
+  ion-item{
+    p{
+      font-size: 18px;
+      font-weight: 500;
+    }
+    ion-icon{
+      width: 50px;
+      height: 25px;
+    }
+  }
+}
 #container {
   text-align: center;
 

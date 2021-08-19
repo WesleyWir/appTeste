@@ -17,5 +17,4 @@ export class HomePage {
       {nome: 'Jô', tel: '(42) 9 9999 9999'}, 
     ];
   }
-
 }
