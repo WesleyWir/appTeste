@@ -18,6 +18,9 @@
     font-family: Roboto;
     color: --ion-text-color;
 }
+ion-grid{
+    height: 92%;
+}
 /** END CUSTOM CSS GLOBAL **/
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Contato } from 'src/app/contato';
+import { ContatoService } from 'src/app/contato.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +10,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
   
-  private _contatos: any[];
+  private _contatos: Contato[];
 
-  constructor() {
-    this._contatos = [
-      {nome: 'Wesley', tel: '(42) 9 9999 9999'}, 
-      {nome: 'Ana', tel: '(42) 9 9999 9999'}, 
-      {nome: 'João', tel: '(42) 9 9999 9999'}, 
-      {nome: 'Jô', tel: '(42) 9 9999 9999'}, 
-    ];
+  constructor(private router : Router, private contatoService: ContatoService) {
+    this._contatos = this.contatoService.getContatos();
+  }
+
+  public goToCadastrar(): void {
+    this.router.navigate(['/cadastrar']);
   }
 }
