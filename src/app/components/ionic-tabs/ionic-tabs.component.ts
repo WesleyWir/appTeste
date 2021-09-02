@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ionic-tabs',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IonicTabsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { 
+
+  }
 
   ngOnInit() {}
 
+  public goToCadastrar(): void {
+    this.router.navigate(['/cadastrar']);
+  }
+
+  public goToHome(): void {
+    this.router.navigate(['/']);
+  }
 }

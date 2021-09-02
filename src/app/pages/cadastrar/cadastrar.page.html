@@ -1,4 +1,4 @@
-<app-ionic-header></app-ionic-header>
+<app-ionic-header [title]="headerTitle"></app-ionic-header>
 
 <ion-content>
   <ion-grid>
@@ -14,7 +14,7 @@
         <ion-item>
           <ion-icon name="call-outline" color="secondary-custom"></ion-icon>
           <ion-label position="floating">Telefone</ion-label>
-          <ion-input type="number" [(ngModel)]="telefone"></ion-input>
+          <ion-input type="text" [(ngModel)]="telefone"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="12">
@@ -33,6 +33,7 @@
           <ion-datetime
           [(ngModel)]="data_nascimento" 
           displayFormat="DD/MM/YYYY" 
+          pickerFormat="DD MMM YYYY"
           min="1900-01-01" 
           max="2021-16-08" 
           value="2002-09-23T15:03:46.789"></ion-datetime>
@@ -44,3 +45,5 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<app-ionic-tabs></app-ionic-tabs>

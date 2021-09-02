@@ -11,8 +11,10 @@ import { ContatoService } from 'src/app/contato.service';
 export class HomePage {
   
   private _contatos: Contato[];
+  headerTitle : string;
 
   constructor(private router : Router, private contatoService: ContatoService) {
+    this.headerTitle = "Página Inicial";
     this._contatos = this.contatoService.getContatos();
   }
 
