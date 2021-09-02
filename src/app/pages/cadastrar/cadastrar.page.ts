@@ -27,7 +27,7 @@ export class CadastrarPage implements OnInit {
   }
 
   public cadastrar(): void {
-    if(this.validate(this.nome) && this.validate(this.telefone)){
+    if(this.validate(this.nome) && this.validate(this.telefone) && this.validate(this.sexo) && this.validate(this.data_nascimento)){
       let contatoModel = new Contato(this.nome, this.telefone, this.sexo, this.formatDate(this.data_nascimento));
       this.contatoService.inserir(contatoModel);
       this.alert("Agenda", "SUCESSO", "Cadastro efetuado!");
