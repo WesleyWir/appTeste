@@ -21,4 +21,8 @@ export class HomePage {
   public goToCadastrar(): void {
     this.router.navigate(['/cadastrar']);
   }
+
+  public goToDetalhar(contato : Contato): void {
+    this.router.navigateByUrl('/detalhar', {state: {contato}});
+  }
 }

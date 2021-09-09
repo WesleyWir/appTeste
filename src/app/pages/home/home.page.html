@@ -10,7 +10,7 @@
   <!-- List of Text Items -->
   <ion-list>
     <ion-item-group *ngFor="let contato of _contatos">
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="goToDetalhar(contato)">
         <ion-row>
           <ion-col size="12">
             <ion-icon name="person-outline" color="secondary-custom"></ion-icon>
