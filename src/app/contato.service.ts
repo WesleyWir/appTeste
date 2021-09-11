@@ -20,14 +20,14 @@ export class ContatoService {
     this._contatos.push(contato);
   }
 
-  public editar(contato : Contato, nome : string, telefone : string, sexo : string, dataDeNascimento : string): boolean
+  public editar(contato : Contato, editedContato : Contato): boolean
   {
     for(let i = 0; i < this._contatos.length; i++){
       if(this._contatos[i].id == contato.id){
-        this._contatos[i].nome = nome;
-        this._contatos[i].telefone = telefone;
-        this._contatos[i].sexo = sexo;
-        this._contatos[i].dataDeNascimento = dataDeNascimento;
+        this._contatos[i].nome = editedContato.nome;
+        this._contatos[i].telefone = editedContato.telefone;
+        this._contatos[i].sexo = editedContato.sexo;
+        this._contatos[i].dataDeNascimento = editedContato.dataDeNascimento;
         return true;
       }
     }
