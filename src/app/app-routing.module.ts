@@ -18,6 +18,14 @@ const routes: Routes = [
     path: 'detalhar',
     loadChildren: () => import('./pages/detalhar/detalhar.module').then( m => m.DetalharPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register-user',
+    loadChildren: () => import('./pages/register-user/register-user.module').then( m => m.RegisterUserPageModule)
+  },
 ];
 
 @NgModule({
