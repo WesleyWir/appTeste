@@ -1,6 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { auth } from 'firebase';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,7 @@ export class AuthService {
   constructor(
     public ngFireAuth : AngularFireAuth,
     public router: Router,
+    public toastController: ToastController,
     public ngZone: NgZone,
   ) { 
     this.ngFireAuth.authState.subscribe(user => {
@@ -39,16 +43,17 @@ export class AuthService {
     this.AuthLogin(new auth.GoogleAuthProvider());
   }
 
-  public AuthLogin(provide)
+  public AuthLogin(provider)
   {
     return this.ngFireAuth.signInWithPopup(provider)
     .then((result) => {
+      this.presentToast("Logou com Google.");
       this.ngZone.run(() => {
         this.router.navigate(["home"]);
       })
     })
     .catch((error) => {
-      console.error("Erro ao logar.");
+      this.presentToast(error);
     })
   }
 
@@ -69,10 +74,10 @@ export class AuthService {
   {
     return this.ngFireAuth.sendPasswordResetEmail(email)
     .then(() => {
-      console.log("Enviado para o email.");
+      this.presentToast("Enviado para o email: "+ email);
     })
     .catch((error) => {
-      console.error(error);
+      this.presentToast("Email não cadastrado.");
     });
   }
 
@@ -80,9 +85,21 @@ export class AuthService {
   {
     return this.ngFireAuth.signOut()
     .then(() => {
-      console.log("Deslogou.");
+      this.presentToast("Volte Sempre!");
       localStorage.removeItem('user');
-      this.router.navigate[('login')]
+      this.ngZone.run(() => {
+        this.router.navigate(["login"]);
+      });
     })
+  }
+
+  async presentToast(message: string)
+  {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 5000
+    });
+
+    toast.present();
   }
 }

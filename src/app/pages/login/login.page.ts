@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
       });
   }
 
-  private logarComGmail():void
+  private loginWithGmail():void
   {
     this.auth.loginWithGmail();
   }

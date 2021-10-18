@@ -1,11 +1,10 @@
 <app-ionic-header [title]="headerTitle"></app-ionic-header>
 
+
 <ion-content [fullscreen]="true">
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="goToCadastrar()" color="secondary-custom">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
+  <ion-button color="danger"
+  (click)="logout()">Sair</ion-button>
+  <ion-item><b>Seja Bem vindo:</b> {{ this._user.email }}</ion-item>
 
   <!-- List of Text Items -->
   <ion-list>

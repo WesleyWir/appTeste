@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { AuthService } from 'src/app/auth.service';
   templateUrl: './register-user.page.html',
   styleUrls: ['./register-user.page.scss'],
 })
+
 export class RegisterUserPage implements OnInit {
   private _formCadastrar: FormGroup;
   private _isSubmitted: boolean = false;
 
-  constructor(public alertController,
+  constructor(public alertController: AlertController,
     public router: Router,
     public auth: AuthService,
     public formBuilder: FormBuilder) { }
