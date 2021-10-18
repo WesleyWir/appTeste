@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Contato } from 'src/app/contato';
-import { ContatoService } from 'src/app/contato.service';
-
+import { CrudContatoService } from 'src/app/crud-contato.service';
 @Component({
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.page.html',
@@ -18,7 +17,7 @@ export class CadastrarPage implements OnInit {
 
   constructor(public alertController: AlertController,
     public router: Router,
-    public contatoService: ContatoService,
+    public contatoService: CrudContatoService,
     public formBuilder: FormBuilder) {
   }
 
@@ -53,7 +52,7 @@ export class CadastrarPage implements OnInit {
       this._formCadastrar.value['sexo'], 
       this.formatDate(this._formCadastrar.value['dataNascimento'])
     );
-    this.contatoService.inserir(contatoModel);
+    this.contatoService.criarContato(contatoModel);
     this.alert("Agenda", "SUCESSO", "Cadastro efetuado!");
     this.router.navigate(["/home"]);
   }
