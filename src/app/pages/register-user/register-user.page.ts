@@ -66,4 +66,9 @@ export class RegisterUserPage implements OnInit {
     await alert.present();
   }
 
+  private goToLogin()
+  {
+    this.router.navigate(['/login']);
+  }
+
 }
