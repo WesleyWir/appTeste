@@ -70,7 +70,7 @@ export class AuthService {
     return (user !== null) ? user : null;
   }
 
-  public resetSenha(email : string)
+  public recoverPassword(email : string)
   {
     return this.ngFireAuth.sendPasswordResetEmail(email)
     .then(() => {

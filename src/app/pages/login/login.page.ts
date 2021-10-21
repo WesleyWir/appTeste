@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
   public submitForm() {
     this._isSubmitted = true;
     if (!this._formLogar.valid) {
-      this.alert("Agenda", "ERRO - Campos Vazios", "Todos os campos são obrigatórios");
+      // this.alert("Agenda", "ERRO - Campos Vazios", "Todos os campos são obrigatórios");
       return false;
     }
     this.logar();
@@ -74,5 +74,10 @@ export class LoginPage implements OnInit {
   private irParaCadastrar() : void
   {
     this.router.navigate(["/register-user"]);
+  }
+
+  private goToRecoverPassword(): void
+  {
+    this.router.navigate(["/recover-password"]);
   }
 }
