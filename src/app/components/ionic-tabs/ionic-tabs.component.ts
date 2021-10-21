@@ -19,6 +19,6 @@ export class IonicTabsComponent implements OnInit {
   }
 
   public goToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }
