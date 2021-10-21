@@ -38,7 +38,6 @@ export class CadastrarPage implements OnInit {
   public submitForm() {
     this._isSubmitted = true;
     if (!this._formCadastrar.valid) {
-      this.alert("Agenda", "ERRO - Campos Vazios", "Todos os campos são obrigatórios");
       return false;
     }
 
@@ -52,9 +51,14 @@ export class CadastrarPage implements OnInit {
       this._formCadastrar.value['sexo'], 
       this.formatDate(this._formCadastrar.value['dataNascimento'])
     );
-    this.contatoService.criarContato(contatoModel);
-    this.alert("Agenda", "SUCESSO", "Cadastro efetuado!");
-    this.router.navigate(["/home"]);
+    this.contatoService.createContact(contatoModel)
+    .then(() => {
+      this.alert("Agenda", "SUCESSO", "Cadastro efetuado!");
+      this.router.navigate(["/home"]);
+    }).catch((e) => {
+      this.alert("Agenda", "Erro", "Erro ao Cadastrar!");
+    });
+
   }
 
   private formatDate(date: string): string {

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Contato } from 'src/app/contato';
-import { ContatoService } from 'src/app/contato.service';
+import { CrudContatoService } from 'src/app/crud-contato.service';
 
 @Component({
   selector: 'app-detalhar',
@@ -19,7 +19,7 @@ export class DetalharPage implements OnInit {
   constructor(
     private router: Router,
     public alertController: AlertController,
-    public contatoService: ContatoService,
+    public contatoService: CrudContatoService,
     public formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -56,24 +56,25 @@ export class DetalharPage implements OnInit {
       this._formDetalhar.value['sexo'], 
       this.formatDate(this._formDetalhar.value['dataNascimento'])
     );
-    let status = this.contatoService.editar(this._contato, contatoModel);
-    if (status) {
+
+    this.contatoService.editContact(this._contato.id, contatoModel)
+    .then(() => {
       this.alert("Agenda", "SUCESSO", "Edição efetuada!");
       this.router.navigate(["/home"]);
-    } else {
+    }).catch((e) => {
       this.alert("Agenda", "ERRO - Campos Vazios", "Todos os campos são obrigatórios");
-    }
+    });
   }
 
   public excluir(): void {
-    let status = this.contatoService.excluir(this._contato);
-
-    if (status) {
+    this.contatoService.deleteContact(this._contato.id)
+    .then(() => {
       this.alert("Agenda", "SUCESSO", "Exclusão efetuada!");
       this.router.navigate(["/home"]);
-    } else {
+    })
+    .catch((e) => {
       this.alert("Agenda", "ERRO", "Contato não encontrado!");
-    }
+    });
   }
 
   private formatDate(date: string): string {

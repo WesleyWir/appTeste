@@ -4,7 +4,7 @@
 <ion-content [fullscreen]="true">
   <ion-button color="danger"
   (click)="logout()">Sair</ion-button>
-  <ion-item><b>Seja Bem vindo:</b> {{ this._user.email }}</ion-item>
+  <ion-item><b>Seja Bem vindo:</b> {{ this._user?.email }}</ion-item>
 
   <!-- List of Text Items -->
   <ion-list>

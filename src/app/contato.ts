@@ -1,5 +1,5 @@
 export class Contato {
-    private _id: number;
+    private _id: string;
     private _nome : string;
     private _telefone : string;
     private _sexo : string;
@@ -11,6 +11,16 @@ export class Contato {
         this._telefone = telefone;
         this._sexo = sexo;
         this._dataDeNascimento = dataDeNascimento;
+    }
+
+    public get id():string
+    {
+        return this._id;
+    }
+
+    public set id(id:string)
+    {
+        this._id = id;
     }
 
     public get nome():string

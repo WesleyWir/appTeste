@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { Contato } from 'src/app/contato';
-import { ContatoService } from 'src/app/contato.service';
+import { CrudContatoService } from 'src/app/crud-contato.service';
 import { User } from 'src/app/user';
 
 @Component({
@@ -14,15 +14,32 @@ export class HomePage {
   
   private _contatos: Contato[];
   private _user : User;
+  private data: any;
   headerTitle : string;
 
   constructor(
     private router : Router, 
-    private contatoService: ContatoService,
+    private contatoService: CrudContatoService,
     private auth: AuthService) {
-    this._user = this.auth.getLoggedUser();
     this.headerTitle = "Página Inicial";
-    this._contatos = this.contatoService.getContatos();
+    this._user = this.auth.getLoggedUser();
+
+    this.data = this.contatoService.readContacts();
+    this.data.forEach((data) => {
+      const list = data as Array<any>;
+      this._contatos = [];
+      list.forEach(c => {
+        let contato = new Contato(
+          c.data._nome,
+          c.data._telefone,
+          c.data._sexo,
+          c.data._dataDeNascimento
+        )
+
+        contato.id = c.key;
+        this._contatos.push(contato);
+      })
+    })
   }
 
   public goToCadastrar(): void {
